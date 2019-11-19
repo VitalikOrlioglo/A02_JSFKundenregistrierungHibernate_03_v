@@ -1,13 +1,31 @@
 package model;
 
-public class Kunde {
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+//@Table(name = "KUNDE")
+@Entity
+public class Kunde implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static final int ALTE_KUNDE = 1;
 	public static final int NEU_KUNDE = 2;
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // nicht alle DB unterstutzen id autoincrement
+	private int id;
 	private int kundenNummer = -1; 
 	private String vorname;
 	private String nachname;
 	private String email;
+	@Column(unique = true)
 	private String username;
 	private String passwort;
 	public Kunde() {

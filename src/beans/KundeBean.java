@@ -6,6 +6,7 @@ import javax.faces.bean.SessionScoped;
 
 import dao.KundeDAO;
 import dao.KundeDummyDAO;
+import dao.KundeHibernateDAO;
 import dao.KundeMySQLDAO;
 import model.Kunde;
 
@@ -21,7 +22,8 @@ public class KundeBean {
 	public void init() {
 		kunde = new Kunde();
 //		dao = new KundeDummyDAO();
-		dao = new KundeMySQLDAO();
+//		dao = new KundeMySQLDAO();
+		dao = new KundeHibernateDAO();
 	}
 	
 	public Kunde getKunde() {
