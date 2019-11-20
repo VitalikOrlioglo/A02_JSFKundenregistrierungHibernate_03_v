@@ -7,8 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-//@Table(name = "KUNDE")
+@Table(name = "kunde")
 @Entity
 public class Kunde implements Serializable {
 	/**
@@ -20,8 +21,9 @@ public class Kunde implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // nicht alle DB unterstutzen id autoincrement
-	private int id;
+	@Column(name="id")
 	private int kundenNummer = -1; 
+//	private int id;
 	private String vorname;
 	private String nachname;
 	private String email;

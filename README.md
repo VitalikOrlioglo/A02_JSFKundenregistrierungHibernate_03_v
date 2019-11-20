@@ -1,6 +1,6 @@
 # JSF Kundenlogin 02
 
-## mit DB - KundeMySQLDAO
+## mit Hibernate - KundeHibernateDAO
 * nur Kunde-Rolle
 * findKundeBy ...
 * storeNewKunde

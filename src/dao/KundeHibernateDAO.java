@@ -11,20 +11,29 @@ import model.Kunde;
 public class KundeHibernateDAO implements KundeDAO {
 	
 	private SessionFactory sf = HibernateUtil.getSessionFactory();
-
+	
+	/**
+	 * TODO ExceptionHandling
+	 */
 	@Override
 	public Kunde findKunde(String usr, String pwd) {
 		Session session = sf.getCurrentSession();
 		session.beginTransaction(); // wird momentan von Query benutzt
-		Query<Kunde> q = session.createQuery("FROM User WHERE username = :u AND passwort = :p", Kunde.class);
+		Query<Kunde> q = session.createQuery("FROM Kunde WHERE username = :u AND passwort = :p", Kunde.class);
 		q.setParameter("u", usr);
 		q.setParameter("p", pwd);
 		Kunde kunde = q.uniqueResult();
+		if (kunde!=null) {
+			return kunde;
+		}
 		session.close();
 		
-		return kunde;
+		return new Kunde();
 	}
-
+	
+	/**
+	 * TODO ExceptionHandling, Rollback
+	 */
 	@Override
 	public boolean storeNewKunde(Kunde newKunde) {
 		Session session = sf.getCurrentSession();
